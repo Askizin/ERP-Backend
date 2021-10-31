@@ -19,9 +19,7 @@ sessionsRouter.post('/', async(req, res) => {
 
     delete user.password;
 
-    return response.json({user, token});
-
-
+    return res.json({user, token});
 
 })
 

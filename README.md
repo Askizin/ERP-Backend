@@ -37,9 +37,9 @@
 ### Author
 ---
 
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/65999604?s=400&u=b16cbc66417f4410798904954a50ce440cb5eb81&v=4" width="150px;" alt=""/>
+ <a><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/65999604?s=400&u=b16cbc66417f4410798904954a50ce440cb5eb81&v=4" width="150px;" alt=""/>
  <br />
- <sub><b>Iury Barbosa Alves</b></sub></a>
+ <sub><b>Iury Barbosa Alves</b></sub></a>  <a href="https://github.com/Askizin" title="Medium"></a>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

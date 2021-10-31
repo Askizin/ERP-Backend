@@ -6,7 +6,7 @@ class UsersRepository extends Repository<User>{
 
 
     public async findByName(name: string):Promise<User | null> {
-        
+
         const findUser = await this.findOne({
             where: {name}
         });
@@ -14,6 +14,5 @@ class UsersRepository extends Repository<User>{
         return findUser || null;
     }
 }
-
 
 export { UsersRepository };

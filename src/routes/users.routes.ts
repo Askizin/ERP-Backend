@@ -8,17 +8,13 @@ import { SearchUserService } from '../services/users/SearchUserService';
 import { UpdateAvatarUserService } from '../services/users/UpdateAvatarUserService';
 import { UpdatePasswordUserService } from '../services/users/UpdatePasswordUserService';
 
-
-
-const userRouter = Router();
-
 const upload = multer(UploadConfig);
-
 
 const usersRouter = Router();
 
-usersRouter.post('/', async (req, res) => {
 
+// ROTA RESPONSÁVEL PARA CRIAR UM USUÁRIO
+usersRouter.post('/', async (req, res) => {
 
     const { name, email, password } = req.body;
 
@@ -31,6 +27,8 @@ usersRouter.post('/', async (req, res) => {
     return res.json(user);
 })
 
+
+// ROTA RESPONSÁVEL PARA LISTAR OS USUÁRIOS
 usersRouter.get('/', ensureAuthenticated, async (req, res) => {
 
     const findUser = new SearchUserService();
@@ -39,6 +37,8 @@ usersRouter.get('/', ensureAuthenticated, async (req, res) => {
     return res.json(users);
 })
 
+
+// ROTA RESPONSÁVEL PARA PROCURAR UM ID
 usersRouter.get('/find/:id', ensureAuthenticated , async (request, response)=>{
 
     const {id} =request.params
@@ -52,7 +52,9 @@ usersRouter.get('/find/:id', ensureAuthenticated , async (request, response)=>{
 
 })
 
-usersRouter.patch('/avatar', ensureAuthenticated ,upload.single('avatar'),async (resquest: Request, response: Response) => {
+
+// ROTA RESPONSÁVEL PARA MUDAR O AVATAR
+usersRouter.patch('/avatar', ensureAuthenticated ,upload.single('avatar'),async (request: Request, response: Response) => {
 
     // obter os dados do arquivo enviado
     // console.log(resquest.file)
@@ -70,8 +72,8 @@ usersRouter.patch('/avatar', ensureAuthenticated ,upload.single('avatar'),async 
 
 })
 
-
-usersRouter.delete('/', ensureAuthenticated, async (resquest: Request, response: Response)=> {
+// ROTA RESPONSÁVEL PARA DELETAR UM USUÁRIO
+usersRouter.delete('/', ensureAuthenticated, async (request: Request, response: Response) => {
 
     const deleteUserService = new DeleteUserService();
 
@@ -84,8 +86,8 @@ usersRouter.delete('/', ensureAuthenticated, async (resquest: Request, response:
 
 })
 
-
-usersRouter.post('/settings/security', ensureAuthenticated, async (resquest: Request, response: Response)=>{
+// ROTA RESPONSÁVEL PARA MUDAR A SENHA DO USUÁRIO
+usersRouter.post('/settings/security', ensureAuthenticated, async (request: Request, response: Response)=>{
 
     const { password, newPassword } = request.body;
 
@@ -105,4 +107,3 @@ usersRouter.post('/settings/security', ensureAuthenticated, async (resquest: Req
 })
 
 export { usersRouter };
-

@@ -20,5 +20,3 @@ app.use(globalErrors);
 
 
 export { app }
-
-

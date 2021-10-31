@@ -36,17 +36,11 @@
 <!-- CONTACT -->
 ### Author
 ---
-
-<<<<<<< HEAD
- <a><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/65999604?s=400&u=b16cbc66417f4410798904954a50ce440cb5eb81&v=4" width="150px;" alt=""/>
  <br />
- <sub><b>Iury Barbosa Alves</b></sub></a>  <a href="https://github.com/Askizin" title="Medium"></a>
-=======
  <a href="https://github.com/Askizin">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/65999604?s=400&u=b16cbc66417f4410798904954a50ce440cb5eb81&v=4" width="150px;" alt=""/>
  <br />
  <sub><b>Iury Barbosa Alves</b></sub></a> <a href="https://github.com/Askizin" title="Medium".</a>
->>>>>>> bd2b1c76db335879f4eb5b499f8682fd25a943fa
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

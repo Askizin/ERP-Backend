@@ -8,7 +8,17 @@ export class CreateUsersRoles1635700739487 implements MigrationInterface {
                 name: "users_roles",
                 columns: [
                     { name: "role_id", type: "uuid" },
-                    { name: "user_id", type:"uuid" }
+                    { name: "user_id", type:"uuid" },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()"
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "now()"
+                    }
                 ],
                 foreignKeys: [
                     {

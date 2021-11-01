@@ -22,22 +22,22 @@ export class CreatePermissionsRoles1635700727247 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        columnNames: ["permission_id"],
-                        referencedColumnNames: ["id"],
-                        referencedTableName: "permissions",
-                        name: "fk_permissions_roles",
-                        onDelete:"RESTRICT",
-                        onUpdate:"CASCADE"
+                      columnNames: ["permission_id"],
+                      referencedColumnNames: ["id"],
+                      referencedTableName: "permissions",
+                      name: "fk_permissions_roles",
+                      onDelete: "RESTRICT",
+                      onUpdate: "CASCADE"
                     },
                     {
-                        columnNames: ["role_id"],
-                        referencedColumnNames: ["id"],
-                        referencedTableName: "roles",
-                        name: "fk_roles_permissions",
-                        onDelete:"RESTRICT",
-                        onUpdate:"CASCADE"
+                      columnNames: ["role_id"],
+                      referencedColumnNames: ["id"],
+                      referencedTableName: "roles",
+                      name: "fk_roles_permissions",
+                      onDelete: "RESTRICT",
+                      onUpdate: "CASCADE"
                     }
-                ]
+                  ]
             })
 
         )

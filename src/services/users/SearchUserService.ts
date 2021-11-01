@@ -13,7 +13,7 @@ interface Request{
 
 class SearchUserService {
 
-    public async search(){
+    public async search(): Promise<User[]>{
 
         const userRepository = getRepository(User);
 
@@ -24,10 +24,12 @@ class SearchUserService {
     }
 
     public async searchById({id}: Request): Promise<User>{
+
         const userRepository = getRepository(User);
 
         const checkUserExists = await userRepository.findOne({
-            where: { id }
+            where: { id },
+            relations :["permissions","roles"],
         });
         if (!checkUserExists){
             throw new AppError('User not found', 404);

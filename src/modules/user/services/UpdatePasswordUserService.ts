@@ -15,6 +15,9 @@ class UpdatePasswordUserService{
         if (!user){
             throw new AppError('User not found', 404);
         }
+        if(newPassword.length <= 5){
+            throw new AppError('Your password must contain at least 6 caracters', 401)
+        }
         if(password && !newPassword){
             throw new AppError('You need to inform the old password to set the new password!')
         }

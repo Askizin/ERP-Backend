@@ -1,5 +1,7 @@
+import { randomUUID } from "crypto";
 import {PrimaryColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
+
 
 class BaseEntity {
     @PrimaryColumn()
@@ -13,7 +15,7 @@ class BaseEntity {
 
     constructor(){
         if(!this.id){
-            this.id = uuid();
+            this.id = randomUUID();
         }
     }
 }

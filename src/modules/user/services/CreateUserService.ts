@@ -15,6 +15,14 @@ class CreateUserService {
 
         const userRepository = getRepository(User);
 
+        if(name.length <= 0 || email.length <= 0){
+            throw new AppError('You must provide a name, email and password', 401)
+        }
+
+        if (password.length <= 5){
+            throw new AppError('Your password must contain at least 6 caracters', 401)
+        }
+
         const checkUserExists = await userRepository.findOne({
             where: {email},
         });
@@ -30,10 +38,12 @@ class CreateUserService {
             email,
             password:hashedPassword
         });
-
+        try {
             await userRepository.save(user);
-
-            return user;
+        } catch (error) {
+            throw new AppError('Error: ',400,error)
+        }
+        return user;
     }
 }
 

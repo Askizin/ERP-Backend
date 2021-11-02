@@ -1,8 +1,8 @@
 import {Request, Response, Router} from "express";
-import { CreateProductService } from "../services/products/CreateProductService"
-import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import { SearchProductService } from "../services/products/SearchProductService";
-import { can, is } from '../middlewares/permissions';
+import { CreateProductService } from "../modules/products/services/CreateProductService"
+import { ensureAuthenticated } from "../utils/middlewares/ensureAuthenticated";
+import { SearchProductService } from "../modules/products/services/SearchProductService";
+import { can, is } from '../utils/middlewares/permissions';
 
 const productsRouter = Router();
 

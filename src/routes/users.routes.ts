@@ -1,12 +1,12 @@
-import { request, Request, Response, Router } from 'express';
+import { Request, Response, Router } from 'express';
 import multer from 'multer';
 import UploadConfig from '../config/uploads';
-import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
-import { CreateUserService } from '../services/users/CreateUserService';
-import { DeleteUserService } from '../services/users/DeleteUsersService';
-import { SearchUserService } from '../services/users/SearchUserService';
-import { UpdateAvatarUserService } from '../services/users/UpdateAvatarUserService';
-import { UpdatePasswordUserService } from '../services/users/UpdatePasswordUserService';
+import { ensureAuthenticated } from '../utils/middlewares/ensureAuthenticated';
+import { CreateUserService } from '../modules/user/services/CreateUserService';
+import { DeleteUserService } from '../modules/user/services/DeleteUsersService';
+import { SearchUserService } from '../modules/user/services/SearchUserService';
+import { UpdateAvatarUserService } from '../modules/user/services/UpdateAvatarUserService';
+import { UpdatePasswordUserService } from '../modules/user/services/UpdatePasswordUserService';
 
 const upload = multer(UploadConfig);
 
@@ -14,9 +14,9 @@ const usersRouter = Router();
 
 
 // ROTA RESPONSÁVEL PARA CRIAR UM USUÁRIO
-usersRouter.post('/', async (req, res) => {
+usersRouter.post('/', async (request : Request, response : Response) => {
 
-    const { name, email, password } = req.body;
+    const { name, email, password } = request.body;
 
     const createUser = new CreateUserService();
 
@@ -24,22 +24,22 @@ usersRouter.post('/', async (req, res) => {
 
     delete user.password;
 
-    return res.json(user);
+    return response.json(user);
 })
 
 
 // ROTA RESPONSÁVEL PARA LISTAR OS USUÁRIOS
-usersRouter.get('/', ensureAuthenticated, async (req, res) => {
+usersRouter.get('/', ensureAuthenticated, async ( Request: Request, response:Response ) => {
 
     const findUser = new SearchUserService();
     const users = await findUser.search();
 
-    return res.json(users);
+    return response.json(users);
 })
 
 
 // ROTA RESPONSÁVEL PARA PROCURAR UM ID
-usersRouter.get('/find/:id', ensureAuthenticated , async (request, response)=>{
+usersRouter.get('/find/:id', ensureAuthenticated , async (request:Request, response: Response)=>{
 
     const {id} =request.params
 
@@ -105,4 +105,5 @@ usersRouter.post('/settings/security', ensureAuthenticated, async (request: Requ
 
 
 })
+
 export { usersRouter };

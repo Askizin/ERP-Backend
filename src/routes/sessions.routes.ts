@@ -1,15 +1,15 @@
-import { response, Router } from 'express'
-import { AuthenticateUserService } from '../services/auth'
+import { Request, Response, Router } from 'express'
+import { AuthenticateUserService } from '../modules/auth/services'
 
 
 // criamos uma sessão
 const sessionsRouter = Router();
 
 // ROTA RESPONSÁVEL POR AUTENTICAR O USUÁRIO
-sessionsRouter.post('/', async(req, res) => {
+sessionsRouter.post('/', async(request: Request, response: Response) => {
 
     //recupera os dados do corpo da requisição
-    const { email, password} = req.body;
+    const { email, password} = request.body;
 
     const authenticateUser = new AuthenticateUserService();
 
@@ -17,9 +17,10 @@ sessionsRouter.post('/', async(req, res) => {
 
     const { user, token } = await authenticateUser.auth({email, password});
 
+    // Retira a senha do usuário do response
     delete user.password;
 
-    return res.json({user, token});
+    return response.json({user, token});
 
 })
 

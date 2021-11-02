@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { logRequest } from '../middlewares/logRequest'
+import { logRequest } from '../utils/middlewares/logRequest'
 import { sessionsRouter } from './sessions.routes';
 import { usersRouter } from'./users.routes';
 import {productsRouter } from'./products.routes';

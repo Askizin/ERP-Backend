@@ -1,11 +1,11 @@
 import {Request, Response, Router} from "express";
-import { ensureAuthenticated } from "../middlewares/ensureAuthenticated";
-import { CreateRolePermissionService } from "../services/roles/CreateRolePermissionService";
-import { CreateRoleService } from "../services/roles/CreateRoleService";
+import { ensureAuthenticated } from "../utils/middlewares/ensureAuthenticated";
+import { CreateRolePermissionService } from "../modules/roles/services/CreateRolePermissionService";
+import { CreateRoleService } from "../modules/roles/services/CreateRoleService";
 
 const rolesRouter = Router();
 
-rolesRouter.post('/', async (request, response) => {
+rolesRouter.post('/', async (request: Request, response: Response) => {
 
     const { name, description } = request.body;
 
@@ -17,7 +17,7 @@ rolesRouter.post('/', async (request, response) => {
 
 })
 
-rolesRouter.post('/:role_id', ensureAuthenticated ,async (request, response) => {
+rolesRouter.post('/:role_id', ensureAuthenticated ,async (request: Request, response: Response) => {
 
     const { role_id } = request.params;
     const { permissions } = request.body;
